@@ -22,6 +22,10 @@ public class Teams {
 
     @Getter
     private List<Team> allTeams;
+    @Getter
+    private List<Team> loadedTeams;
+    @Getter @Setter
+    private String teamToSearch = "";
 
     @PostConstruct
     public void init(){
@@ -35,5 +39,9 @@ public class Teams {
 
     private void loadAllTeams(){
         this.allTeams = teamsDAO.loadAll();
+    }
+    @Transactional
+    public void loadTeamLike(){
+        this.loadedTeams = teamsDAO.loadTeam(teamToSearch);
     }
 }

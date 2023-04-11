@@ -3,19 +3,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
-<h:head/>
+<h:head>
+    <link rel="stylesheet" href="frontEnd.css" type="text/css"/>
+</h:head>
 <h:body>
+    <nav>
+        <h:link value="See all teams" outcome="index"/>
+        <h:link value="See all leagues" outcome="league"/>
+        <h:link value="Search for a team" outcome="teamSearch"/>
+    </nav>
     <h2>Teams:</h2>
     <ol>
         <ui:repeat value="#{teams.allTeams}" var="team">
             <li><h:link value="#{team.name}" outcome="players?teamId=#{team.id}" /></li>
+            <ui:repeat value="#{team.leagues}" var="league">
+                #{league.shortName}
+            </ui:repeat>
         </ui:repeat>
     </ol>
+    <h3>Add a new team: </h3>
     <h:form>
         <h:inputText value="#{teams.teamToCreate.name}" required="true" />
+        <h:selectManyCheckbox id="chooseLeagues" value="#{teams.teamToCreate.leagues}">
+                <f:selectItems value="#{leagues.allLeagues}" var="league" itemValue="#{league}" itemLabel="#{league.shortName}"/>
+        </h:selectManyCheckbox>
+
         <h:commandButton value="Add new team" actionListener="#{teams.createTeam}" action="index?faces-redirect=true"/>
     </h:form>
-    <h:link outcome="myBatis/teams" value="MyBatis implementation"/>
+
+
+
+
+
+
 </h:body>
 </html>

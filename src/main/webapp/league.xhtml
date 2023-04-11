@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head>
+    <link rel="stylesheet" href="frontEnd.css" type="text/css"/>
+</h:head>
+<h:body>
+    <nav>
+        <h:link value="See all teams" outcome="index"/>
+        <h:link value="See all leagues" outcome="league"/>
+        <h:link value="Search for a team" outcome="teamSearch"/>
+    </nav>
+    <ui:repeat value="#{leagues.allLeagues}" var="league">
+
+
+
+        <h1>#{league.name} (#{league.shortName}):</h1>
+        <h2>Teams: </h2>
+        <ol>
+            <ui:repeat value="#{league.teams}" var="team">
+                <li><h:link value="#{team.name}" outcome="players?teamId=#{team.id}" /></li>
+            </ui:repeat>
+        </ol>
+
+    </ui:repeat>
+
+</h:body>
+</html>
