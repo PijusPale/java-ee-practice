@@ -42,4 +42,26 @@ public class Team {
 
         return Objects.hash(name);
     }
+
+    @OneToOne
+    private Arena homeArena;
+
+    public Arena getHomeArena() {
+        return homeArena;
+    }
+
+    public void setHomeArena(Arena homeArena) {
+        this.homeArena = homeArena;
+    }
+
+    @ManyToMany
+    private List<League> leagues;
+
+    public List<League> getLeagues() {
+        return leagues;
+    }
+
+    public void setLeagues(List<League> leagues) {
+        this.leagues = leagues;
+    }
 }

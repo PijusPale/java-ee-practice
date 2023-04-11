@@ -5,8 +5,16 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://java.sun.com/jsf/core"
 >
-<h:head/>
+<h:head>
+    <link rel="stylesheet" href="frontEnd.css" type="text/css"/>
+</h:head>
 <h:body>
+    <nav>
+        <h:link value="See all teams" outcome="index"/>
+        <h:link value="See all leagues" outcome="league"/>
+        <h:link value="Search for a team" outcome="teamSearch"/>
+    </nav>
+
     <h2>#{updatePlayerDetails.player.name}</h2>
     <h:form>
         <h:outputText value="jersey number: "/>

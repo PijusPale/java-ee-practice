@@ -24,5 +24,15 @@
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
             <ignoreColumn column="opt_lock_version" />
         </table>
+        <table schema="public" tableName="arena">
+            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+        </table>
+        <table schema="public" tableName="league">
+            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+        </table>
+        <table schema="public" tableName="team_league">
+            <columnOverride column="team_id" javaType="int" jdbcType="INTEGER" />
+            <columnOverride column="league_id" javaType="int" jdbcType="INTEGER" />
+        </table>
     </context>
 </generatorConfiguration>

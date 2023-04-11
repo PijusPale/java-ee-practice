@@ -28,4 +28,13 @@ public class TeamsDAO {
     public Team findOne(Integer id) {
         return em.find(Team.class, id);
     }
+    public List loadTeam(String s) {
+        s = s.toUpperCase();
+        return em.createQuery(
+                "select t " +
+                    "from Team as t " +
+                    "where upper(t.name) like :teamName")
+                .setParameter("teamName", s == null ? "" : "%" + s + "%").
+                getResultList();
+    }
 }
